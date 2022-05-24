@@ -200,22 +200,22 @@ const sections = [
     items: [
       {
         title: "Dashboard",
-        path: "/dashboard/kanban",
+        path: "/console/consoledashboard",
         icon: <ClipboardListIcon fontSize="small" />,
       },
       {
         title: "Live Chat",
-        path: "/dashboard/livechat",
+        path: "/console/livechat",
         icon: <ChatAltIcon fontSize="small" />,
       },
       {
-        title: "Broad",
-        path: "/dashboard/mail",
+        title: "Broadcast",
+        path: "/console/broadcast",
         icon: <MailIcon fontSize="small" />,
       },
       {
-        title: "Calendar",
-        path: "/dashboard/calendar",
+        title: "Settings",
+        path: "/console/settings",
         icon: <CalendarIcon fontSize="small" />,
       },
     ],

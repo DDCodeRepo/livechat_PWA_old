@@ -7,11 +7,11 @@ import ChatThreadItem from './ChatThreadItem';
 const ChatThreadList: FC = (props) => {
   const { threads, activeThreadId } = useSelector((state) => state.chat);
   const navigate = useNavigate();
-
+  
   const handleSelect = (threadId: string): void => {
     const thread = threads.byId[threadId];
     let threadKey;
-
+    
     if (thread.type === 'GROUP') {
       threadKey = thread.id;
     } else {
@@ -26,7 +26,7 @@ const ChatThreadList: FC = (props) => {
       threadKey = otherParticipant.username;
     }
 
-    navigate(`/dashboard/chat/${threadKey}`);
+    navigate(`/console/chat/${threadKey}`);
   };
 
   return (

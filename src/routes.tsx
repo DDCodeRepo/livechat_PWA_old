@@ -89,6 +89,10 @@ const Calendar = Loadable(lazy(() => import("./pages/dashboard/Calendar")));
 const Chat = Loadable(lazy(() => import("./pages/dashboard/Chat")));
 // ++++++++++++ LIVE CHAT ++++++++++++++++
 const Livechat = Loadable(lazy(() => import("./pages/dashboard/LiveChat")));
+const ConsoleDashboard = Loadable(lazy(()=>import("./pages/dashboard/ConsoleDashboard")));
+const Broadcast = Loadable(lazy(()=>import("./pages/dashboard/Broadcast")));
+const Settings = Loadable(lazy(()=> import("./pages/dashboard/Settings")));
+// +++++++++++++LIVE CHAT ++++++++++++++++
 const CustomerDetails = Loadable(
   lazy(() => import("./pages/dashboard/CustomerDetails"))
 );
@@ -222,7 +226,7 @@ const routes: PartialRouteObject[] = [
     element: <Contact />,
   },
   {
-    path: "dashboard",
+    path: "console",
     element: (
       <AuthGuard>
         <DashboardLayout />
@@ -262,6 +266,24 @@ const routes: PartialRouteObject[] = [
           },
         ],
       },
+      // Live Chat section
+      {
+        path: "consoledashboard",
+        children: [
+          {
+            path: "/",
+            element: <ConsoleDashboard />,
+          },
+          {
+            path: "new",
+            element: <ConsoleDashboard />,
+          },
+          {
+            path: ":threadKey",
+            element: <ConsoleDashboard />,
+          },
+        ],
+      },
       {
         path: "livechat",
         children: [
@@ -276,6 +298,40 @@ const routes: PartialRouteObject[] = [
           {
             path: ":threadKey",
             element: <Livechat />,
+          },
+        ],
+      },
+      {
+        path: "broadcast",
+        children: [
+          {
+            path: "/",
+            element: <Broadcast />,
+          },
+          {
+            path: "new",
+            element: <Broadcast />,
+          },
+          {
+            path: ":threadKey",
+            element: <Broadcast />,
+          },
+        ],
+      },
+      {
+        path: "settings",
+        children: [
+          {
+            path: "/",
+            element: <Settings />,
+          },
+          {
+            path: "new",
+            element: <Settings />,
+          },
+          {
+            path: ":threadKey",
+            element: <Settings />,
           },
         ],
       },

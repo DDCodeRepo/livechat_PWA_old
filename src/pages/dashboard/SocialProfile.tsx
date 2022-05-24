@@ -194,7 +194,7 @@ const SocialProfile: FC = () => {
                 component={RouterLink}
                 size="small"
                 sx={{ ml: 1 }}
-                to="/dashboard/chat"
+                to="/console/chat"
                 variant="contained"
               >
                 Send Message

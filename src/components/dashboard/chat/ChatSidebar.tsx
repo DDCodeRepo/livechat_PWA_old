@@ -53,7 +53,7 @@ const ChatSidebar: FC = () => {
   const handleSearchSelect = (result: any): void => {
     setIsSearchFocused(false);
     setSearchQuery('');
-    navigate(`/dashboard/chat/${result.username}`);
+    navigate(`/console/chat/${result.username}`);
   };
 
   return (
@@ -90,12 +90,12 @@ const ChatSidebar: FC = () => {
         </Hidden>
         <IconButton
           component={RouterLink}
-          to="/dashboard/chat/new"
+          to="/colsole/chat/new"
         >
           <PencilAltIcon fontSize="small" />
         </IconButton>
       </Box>
-      <Hidden smDown>
+      {/* <Hidden smDown>
         <ChatContactSearch
           isFocused={isSearchFocused}
           onChange={handleSearchChange}
@@ -105,7 +105,7 @@ const ChatSidebar: FC = () => {
           query={searchQuery}
           results={searchResults}
         />
-      </Hidden>
+      </Hidden> */}
       <Scrollbar options={{ suppressScrollX: true }}>
         <Box sx={{ display: isSearchFocused ? 'none' : undefined }}>
           <ChatThreadList />

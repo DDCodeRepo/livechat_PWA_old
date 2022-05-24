@@ -1,11 +1,12 @@
 import { useEffect } from "react";
 import type { FC } from "react";
 import { Helmet } from "react-helmet-async";
-import { Box } from "@material-ui/core";
+import { AppBar, Box, Toolbar, IconButton, Typography } from "@material-ui/core";
 import { ChatSidebar, ChatThread } from "../../components/dashboard/chat";
 import gtm from "../../lib/gtm";
 import { getThreads } from "../../slices/chat";
 import { useDispatch } from "../../store";
+import MenuIcon from '@mui/icons-material';
 
 const LiveChat: FC = () => {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ const LiveChat: FC = () => {
 
   return (
     <>
+    {/*  */}
       <Helmet>
         <title>Dashboard: Live Chat | Material Kit Pro</title>
       </Helmet>
@@ -31,8 +33,9 @@ const LiveChat: FC = () => {
         }}
       >
         <ChatSidebar />
+        
         <ChatThread />
-        {/* <ChatSidebar /> */}
+    
       </Box>
     </>
   );

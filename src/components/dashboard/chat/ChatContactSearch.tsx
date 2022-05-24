@@ -54,7 +54,7 @@ const ChatContactSearch = forwardRef<HTMLDivElement, ChatContactSearchProps>((
         sx={{ px: 1 }}
         {...other}
       >
-        <Box
+        {/* <Box
           sx={{
             alignItems: 'center',
             backgroundColor: 'background.default',
@@ -83,7 +83,7 @@ const ChatContactSearch = forwardRef<HTMLDivElement, ChatContactSearchProps>((
               value={query}
             />
           </Box>
-        </Box>
+        </Box> */}
         {displayResults && (
           <Box sx={{ mt: 2 }}>
             <Typography

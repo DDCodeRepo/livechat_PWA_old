@@ -1,7 +1,9 @@
 import { useEffect } from 'react';
 import type { FC } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Box, Divider } from '@material-ui/core';
+import { Box, Divider, AppBar, Toolbar, Typography, IconButton } from '@material-ui/core';
+import MenuIcon from '@mui/icons-material/Menu';
+import ChatBar from "./ChatBar";
 import {
   addRecipient,
   getParticipants,
@@ -109,6 +111,7 @@ const ChatThread: FC = () => {
         flexGrow: 1
       }}
     >
+       <ChatBar/>
       {mode === 'DETAIL' && (
         <ChatThreadToolbar participants={participants} />
       )}
