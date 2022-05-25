@@ -1,8 +1,15 @@
-import { useEffect } from 'react';
-import type { FC } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import { Box, Divider, AppBar, Toolbar, Typography, IconButton } from '@material-ui/core';
-import MenuIcon from '@mui/icons-material/Menu';
+import { useEffect } from "react";
+import type { FC } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import {
+  Box,
+  Divider,
+  AppBar,
+  Toolbar,
+  Typography,
+  IconButton,
+} from "@material-ui/core";
+import MenuIcon from "@mui/icons-material/Menu";
 import ChatBar from "./ChatBar";
 import {
   addRecipient,
@@ -10,14 +17,14 @@ import {
   getThread,
   markThreadAsSeen,
   removeRecipient,
-  resetActiveThread
-} from '../../../slices/chat';
-import { useDispatch, useSelector } from '../../../store';
-import type { RootState } from '../../../store';
-import ChatMessageAdd from './ChatMessageAdd';
-import ChatMessages from './ChatMessages';
-import ChatThreadComposer from './ChatThreadComposer';
-import ChatThreadToolbar from './ChatThreadToolbar';
+  resetActiveThread,
+} from "../../../slices/chat";
+import { useDispatch, useSelector } from "../../../store";
+import type { RootState } from "../../../store";
+import ChatMessageAdd from "./ChatMessageAdd";
+import ChatMessages from "./ChatMessages";
+import ChatThreadComposer from "./ChatThreadComposer";
+import ChatThreadToolbar from "./ChatThreadToolbar";
 
 const threadSelector = (state: RootState): any => {
   const { threads, activeThreadId } = state.chat;
@@ -31,7 +38,7 @@ const threadSelector = (state: RootState): any => {
     id: null,
     messages: [],
     participants: [],
-    unreadMessages: 0
+    unreadMessages: 0,
   };
 };
 
@@ -39,11 +46,9 @@ const ChatThread: FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { threadKey } = useParams();
-  const {
-    activeThreadId,
-    participants,
-    recipients
-  } = useSelector((state) => state.chat);
+  const { activeThreadId, participants, recipients } = useSelector(
+    (state) => state.chat
+  );
   const thread = useSelector((state) => threadSelector(state));
 
   const getDetails = async (): Promise<void> => {
@@ -56,7 +61,7 @@ const ChatThread: FC = () => {
       // the server throws an error, this means that the user tried a shady route
       // and we redirect him on the compose route
       console.error(err);
-      navigate('/dashboard/chat/new');
+      navigate("/dashboard/chat/new");
     }
   };
 
@@ -84,7 +89,7 @@ const ChatThread: FC = () => {
   // In our case there two possible routes
   // one that contains chat/new and one with a chat/:threadKey
   // if threadKey does not exist, it means that the chat is in compose mode
-  const mode = threadKey ? 'DETAIL' : 'COMPOSE';
+  const mode = threadKey ? "DETAIL" : "COMPOSE";
 
   const handleAddRecipient = (recipient: any): void => {
     dispatch(addRecipient(recipient));
@@ -105,17 +110,15 @@ const ChatThread: FC = () => {
   return (
     <Box
       sx={{
-        backgroundColor: 'background.default',
-        display: 'flex',
-        flexDirection: 'column',
-        flexGrow: 1
+        backgroundColor: "background.default",
+        display: "flex",
+        flexDirection: "column",
+        flexGrow: 1,
       }}
     >
-       <ChatBar/>
-      {mode === 'DETAIL' && (
-        <ChatThreadToolbar participants={participants} />
-      )}
-      {mode === 'COMPOSE' && (
+      {/* <ChatBar/> */}
+      {mode === "DETAIL" && <ChatThreadToolbar participants={participants} />}
+      {mode === "COMPOSE" && (
         <ChatThreadComposer
           onAddRecipient={handleAddRecipient}
           onRemoveRecipient={handleRemoveRecipient}
@@ -125,7 +128,7 @@ const ChatThread: FC = () => {
       <Box
         sx={{
           flexGrow: 1,
-          overflow: 'auto'
+          overflow: "auto",
         }}
       >
         <ChatMessages
@@ -134,10 +137,7 @@ const ChatThread: FC = () => {
         />
       </Box>
       <Divider />
-      <ChatMessageAdd
-        disabled={false}
-        onSend={handleSendMessage}
-      />
+      <ChatMessageAdd disabled={false} onSend={handleSendMessage} />
     </Box>
   );
 };

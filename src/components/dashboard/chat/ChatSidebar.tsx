@@ -1,27 +1,29 @@
-import { useState } from 'react';
-import type { ChangeEvent, FC } from 'react';
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
-import { Box, Hidden, IconButton, Typography } from '@material-ui/core';
-import CogIcon from '../../../icons/Cog';
-import PencilAltIcon from '../../../icons/PencilAlt';
-import type { Contact } from '../../../types/chat';
-import axios from '../../../lib/axios';
-import Scrollbar from '../../Scrollbar';
-import ChatContactSearch from './ChatContactSearch';
-import ChatThreadList from './ChatThreadList';
+import { useState } from "react";
+import type { ChangeEvent, FC } from "react";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { Box, Hidden, IconButton, Typography } from "@material-ui/core";
+import CogIcon from "../../../icons/Cog";
+import PencilAltIcon from "../../../icons/PencilAlt";
+import type { Contact } from "../../../types/chat";
+import axios from "../../../lib/axios";
+import Scrollbar from "../../Scrollbar";
+import ChatContactSearch from "./ChatContactSearch";
+import ChatThreadList from "./ChatThreadList";
 
 const ChatSidebar: FC = () => {
   const navigate = useNavigate();
   const [isSearchFocused, setIsSearchFocused] = useState(false);
-  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [searchQuery, setSearchQuery] = useState<string>("");
   const [searchResults, setSearchResults] = useState<Contact[]>([]);
 
   const handleSearchClickAway = (): void => {
     setIsSearchFocused(false);
-    setSearchQuery('');
+    setSearchQuery("");
   };
 
-  const handleSearchChange = async (event: ChangeEvent<HTMLInputElement>): Promise<void> => {
+  const handleSearchChange = async (
+    event: ChangeEvent<HTMLInputElement>
+  ): Promise<void> => {
     try {
       const { value } = event.target;
 
@@ -29,11 +31,11 @@ const ChatSidebar: FC = () => {
 
       if (value) {
         const response = await axios.get<{ results: any[] }>(
-          '/api/chat/search',
+          "/api/chat/search",
           {
             params: {
-              query: value
-            }
+              query: value,
+            },
           }
         );
 
@@ -52,35 +54,32 @@ const ChatSidebar: FC = () => {
 
   const handleSearchSelect = (result: any): void => {
     setIsSearchFocused(false);
-    setSearchQuery('');
-    navigate(`/console/chat/${result.username}`);
+    setSearchQuery("");
+    navigate(`/livechat/${result.username}`);
   };
 
   return (
     <Box
       sx={{
-        display: 'flex',
-        backgroundColor: 'background.paper',
+        display: "flex",
+        backgroundColor: "background.paper",
         borderRight: 1,
-        borderColor: 'divider',
-        flexDirection: 'column',
-        maxWidth: '100%',
-        width: 300
+        borderColor: "divider",
+        flexDirection: "column",
+        maxWidth: "100%",
+        width: 230,
       }}
     >
       <Box
         sx={{
-          alignItems: 'center',
-          display: 'flex',
+          alignItems: "center",
+          display: "flex",
           height: 64,
-          px: 2
+          px: 2,
         }}
       >
         <Hidden smDown>
-          <Typography
-            color="textPrimary"
-            variant="h5"
-          >
+          <Typography color="textPrimary" variant="h5">
             Chats
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
@@ -88,10 +87,7 @@ const ChatSidebar: FC = () => {
             <CogIcon fontSize="small" />
           </IconButton>
         </Hidden>
-        <IconButton
-          component={RouterLink}
-          to="/colsole/chat/new"
-        >
+        <IconButton component={RouterLink} to="/colsole/chat/new">
           <PencilAltIcon fontSize="small" />
         </IconButton>
       </Box>
@@ -107,7 +103,7 @@ const ChatSidebar: FC = () => {
         />
       </Hidden> */}
       <Scrollbar options={{ suppressScrollX: true }}>
-        <Box sx={{ display: isSearchFocused ? 'none' : undefined }}>
+        <Box sx={{ display: isSearchFocused ? "none" : undefined }}>
           <ChatThreadList />
         </Box>
       </Scrollbar>

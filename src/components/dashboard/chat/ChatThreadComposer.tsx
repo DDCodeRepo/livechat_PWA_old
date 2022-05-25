@@ -116,7 +116,7 @@ const ChatThreadComposer: FC<ChatThreadComposerProps> = (props) => {
       }}
       {...other}
     >
-      <Typography
+      {/* <Typography
         variant="body1"
         color="textSecondary"
       >
@@ -161,7 +161,7 @@ const ChatThreadComposer: FC<ChatThreadComposerProps> = (props) => {
           }
           value={query}
         />
-      </Box>
+      </Box> */}
       {displayResults && (
         <ClickAwayListener
           onClickAway={handleSearchResultsClickAway}
