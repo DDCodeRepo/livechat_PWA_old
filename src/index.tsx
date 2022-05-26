@@ -15,8 +15,8 @@ import App from './App';
 import { AuthProvider } from './contexts/JWTContext';
 import { SettingsProvider } from './contexts/SettingsContext';
 import reportWebVitals from './reportWebVitals';
-//import * as serviceWorker from './serviceWorker';
-import * as serviceWorkerRegistration from './serviceWorkerRegistration';
+import * as serviceWorker from './serviceWorker';
+//import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import store from './store';
 
 ReactDOM.render(
@@ -41,7 +41,7 @@ ReactDOM.render(
 );
 
 // If you want to enable client cache, register instead.
-serviceWorkerRegistration.register();
+serviceWorker.register();
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
