@@ -1,7 +1,6 @@
 {
-  "name" : "Codetube",
-  "short_name" : "Codetube",
-  "description" : "Download Videos",
+  "short_name": "React App",
+  "name": "Create React App Sample",
   "icons": [
     {
       "src": "favicon.ico",
@@ -21,15 +20,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#222831",
-  "background_color": "#222831",
-  "share_target": {
-    "action": "/download",
-    "method": "GET",
-    "params": {
-      "title": "title",
-      "text": "text",
-      "url": "url"
-    }
-  }
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
 }
