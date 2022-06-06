@@ -4282,9 +4282,6 @@
         Re().precache(e);
       })([
         { revision: "de57b5b74901a0826d70357e652795b1", url: "/index.html" },
-        { revision: null, url: "/static/css/main.073c9b0a.css" },
-        { revision: null, url: "/static/js/787.5a4f7a02.chunk.js" },
-        { revision: null, url: "/static/js/main.00c3d530.js" },
         {
           revision: "5d5d9eefa31e5e13a6610d9fa7a283bb",
           url: "/static/media/logo.103b5fa18196d5665a7e12318285c916.svg",
