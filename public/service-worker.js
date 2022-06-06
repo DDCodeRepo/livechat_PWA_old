@@ -4282,10 +4282,6 @@
         Re().precache(e);
       })([
         { revision: "de57b5b74901a0826d70357e652795b1", url: "/index.html" },
-        {
-          revision: "5d5d9eefa31e5e13a6610d9fa7a283bb",
-          url: "/static/media/logo.103b5fa18196d5665a7e12318285c916.svg",
-        },
       ]),
       (function (e) {
         var t = Re();
